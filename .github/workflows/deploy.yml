@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm i pnpm -g
+      - run: pnpm install --frozen-lockfile
+
+      # 打包静态文件
+      - name: Build
+        run: pnpm install && pnpm run build
+
+      - name: Copy files
+        run: cp README.md ./dist/
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
+          #cname: jyblog.stm32-mqtt.top # if wanna deploy to custom domain
