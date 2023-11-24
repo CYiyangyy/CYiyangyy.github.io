@@ -12,7 +12,7 @@ const MD_HEADER = `# yy-notes
 
 日常笔记记录（零零散散啥都记系列）
 
-> 更多博客内容可查看 [yy的前端小窝(新)](https://CYiyangyy.github.io)
+> 更多博客内容可查看 [yy的博客](https://CYiyangyy.github.io)
 >
 > [新写一篇小笔记](https://github.com/CYiyangyy/CYiyangyy.github.io/issues/new)
 `
